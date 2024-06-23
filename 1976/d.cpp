@@ -3,6 +3,7 @@
 // using the std namespace is not recommanded in projects but common in competitive programming
 using namespace std;
 
+// Sparse Table can calculate the max/min of any range in an array with O(n\log(n)) initialization and O(1) query.
 template <typename T>
 class SparseTable {
   vector<vector<T>> ST;
@@ -22,6 +23,7 @@ class SparseTable {
     }
   }
 
+  // queries l and r inclusive
   T query(int l, int r) {
     int lt = r - l + 1;
     int q = floor(log2(lt));
