@@ -5,8 +5,11 @@ target=${1:-$(find . -type f -name "*.cpp" -exec stat --format '%Y :%y %n' "{}" 
 
 echo "Building $target"
 g++ -o output -O3 -std=c++17 $target
-echo "Running:"
-./output > output.txt
+if [ -f "input.txt" ]; then
+    ./output < input.txt > output.txt
+else
+    echo "Running:"
+    ./output > output.txt
+fi
 echo "Output:"
 cat output.txt
-rm output output.txt
